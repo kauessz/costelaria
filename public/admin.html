@@ -8,9 +8,59 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body class="antialiased">
-  <!-- login-screen, admin-dashboard, confirmation-modal... -->
-  <!-- TODO: copiar conteúdo HTML estático do admin.html anterior -->
+<body class="bg-gray-900 text-white">
+  <!-- Login -->
+  <div id="login-screen" class="min-h-screen flex items-center justify-center">
+    <form id="login-form" class="bg-gray-800 p-8 rounded shadow-md w-full max-w-sm space-y-4">
+      <h2 class="text-2xl font-semibold text-center">Admin</h2>
+      <input type="email" id="email" class="w-full p-2 bg-gray-700 rounded" placeholder="Email" required>
+      <input type="password" id="password" class="w-full p-2 bg-gray-700 rounded" placeholder="Senha" required>
+      <div id="login-error" class="text-red-400 text-sm hidden"></div>
+      <button type="submit" class="w-full py-2 bg-brand-color hover:bg-brand-color/80 rounded">Entrar</button>
+    </form>
+  </div>
+
+  <!-- Painel Administrativo -->
+  <div id="admin-dashboard" class="hidden p-6">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold brand-color">Painel de Controle</h1>
+      <button id="logout-button" class="text-sm text-red-400 hover:text-red-600">Sair</button>
+    </div>
+
+    <section class="mb-10">
+      <div class="flex items-center justify-between bg-gray-800 p-4 rounded-lg">
+        <div>
+          <p id="store-status-text" class="text-sm font-medium"></p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="store-status-toggle">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl mb-4">Pedidos</h2>
+      <div id="orders-list" class="space-y-4"></div>
+    </section>
+
+    <section class="mb-10">
+      <h2 class="text-2xl mb-4">Gerenciar Cardápio</h2>
+      <div id="menu-management-list" class="space-y-4"></div>
+    </section>
+  </div>
+
+  <!-- Modal de confirmação -->
+  <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden items-center justify-center p-4">
+    <div class="bg-gray-800 rounded-lg p-6 max-w-sm text-center shadow-2xl border border-gray-700">
+      <p class="text-white mb-4">Insira o valor final do pedido</p>
+      <input id="final-price-input" type="number" class="w-full p-2 rounded bg-gray-700 text-white mb-4">
+      <div class="flex justify-center gap-4">
+        <button id="submit-confirm-button" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Confirmar</button>
+        <button id="cancel-confirm-button" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Cancelar</button>
+      </div>
+    </div>
+  </div>
 
   <script type="module" src="js/admin.js"></script>
 </body>
